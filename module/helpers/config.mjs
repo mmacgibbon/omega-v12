@@ -35,6 +35,56 @@ OMEGA.coreTraitAbbreviations = {
 };
 
 /**
+ * Skill Groups Configuration
+ * @type {Object}
+ */
+OMEGA.skillGroups = {
+  athletics: 'OMEGA.SkillGroup.Athletics',
+  combat: 'OMEGA.SkillGroup.Combat',
+  social: 'OMEGA.SkillGroup.Social',
+  technical: 'OMEGA.SkillGroup.Technical',
+  knowledge: 'OMEGA.SkillGroup.Knowledge',
+  perception: 'OMEGA.SkillGroup.Perception'
+};
+
+/**
+ * Skills Configuration
+ * @type {Object}
+ */
+OMEGA.skills = {
+  // Athletics skills
+  climb: 'OMEGA.Skill.Climb',
+  swim: 'OMEGA.Skill.Swim',
+  run: 'OMEGA.Skill.Run',
+  jump: 'OMEGA.Skill.Jump',
+  
+  // Combat skills
+  melee: 'OMEGA.Skill.Melee',
+  ranged: 'OMEGA.Skill.Ranged',
+  dodge: 'OMEGA.Skill.Dodge',
+  
+  // Social skills
+  persuade: 'OMEGA.Skill.Persuade',
+  intimidate: 'OMEGA.Skill.Intimidate',
+  deceive: 'OMEGA.Skill.Deceive',
+  
+  // Technical skills
+  computers: 'OMEGA.Skill.Computers',
+  engineering: 'OMEGA.Skill.Engineering',
+  medicine: 'OMEGA.Skill.Medicine',
+  
+  // Knowledge skills
+  science: 'OMEGA.Skill.Science',
+  history: 'OMEGA.Skill.History',
+  streetwise: 'OMEGA.Skill.Streetwise',
+  
+  // Perception skills
+  notice: 'OMEGA.Skill.Notice',
+  search: 'OMEGA.Skill.Search',
+  track: 'OMEGA.Skill.Track'
+};
+
+/**
  * Dice Pool Configuration
  * @type {Object}
  */

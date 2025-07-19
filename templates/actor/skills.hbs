@@ -1,0 +1,61 @@
+{{! Skills Tab }}
+<div class='tab skills' data-group='primary' data-tab='skills'>
+  <div class='skills-container'>
+    {{#each system.skillGroups as |group key|}}
+      <div class='skill-group'>
+        <div class='skill-group-header'>
+          <h3 class='skill-group-title'>{{group.label}}</h3>
+          <div class='skill-group-value'>
+            <input
+              type='number'
+              name='system.skillGroups.{{key}}.value'
+              value='{{group.value}}'
+              min='0'
+              max='10'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+        
+        <div class='skills-list'>
+          {{#each ../system.skills as |skill skillKey|}}
+            {{#if (eq skill.group ../key)}}
+              <div class='skill-item'>
+                <div class='skill-info'>
+                  <label class='skill-label'>{{skill.label}}</label>
+                  <span class='skill-trait'>{{localize (concat 'OMEGA.Trait.' (capitalize skill.trait) '.abbr')}}</span>
+                </div>
+                <div class='skill-roll'>
+                  <button
+                    class='skill-roll-button'
+                    data-action='roll'
+                    data-roll-type='skill'
+                    data-skill='{{skillKey}}'
+                    data-group='{{skill.group}}'
+                    data-trait='{{skill.trait}}'
+                    data-group-value='{{skill.groupValue}}'
+                    data-trait-value='{{skill.traitValue}}'
+                    data-skill-value='{{skill.value}}'
+                    title='Roll {{skill.label}}'
+                  >
+                    {{skill.groupValue}}k{{skill.traitValue}}+{{skill.value}}
+                  </button>
+                </div>
+                <div class='skill-value'>
+                  <input
+                    type='number'
+                    name='system.skills.{{skillKey}}.value'
+                    value='{{skill.value}}'
+                    min='0'
+                    max='10'
+                    data-dtype='Number'
+                  />
+                </div>
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div> 

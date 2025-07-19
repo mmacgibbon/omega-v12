@@ -48,6 +48,9 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
     traits: {
       template: 'systems/omega-v12/templates/actor/traits.hbs',
     },
+    skills: {
+      template: 'systems/omega-v12/templates/actor/skills.hbs',
+    },
     features: {
       template: 'systems/omega-v12/templates/actor/features.hbs',
     },
@@ -66,7 +69,7 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'tabs', 'traits', 'biography'];
+    options.parts = ['header', 'tabs', 'traits', 'skills', 'biography'];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
@@ -110,6 +113,9 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'traits':
+        context.tab = context.tabs[partId];
+        break;
+      case 'skills':
         context.tab = context.tabs[partId];
         break;
       case 'features':
@@ -174,6 +180,10 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
         case 'traits':
           tab.id = 'traits';
           tab.label += 'Traits';
+          break;
+        case 'skills':
+          tab.id = 'skills';
+          tab.label += 'Skills';
           break;
         case 'biography':
           tab.id = 'biography';
@@ -361,6 +371,42 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
   static async _onRoll(event, target) {
     event.preventDefault();
     const dataset = target.dataset;
+
+    // Handle skill rolls
+    if (dataset.rollType === 'skill') {
+      const groupValue = parseInt(dataset.groupValue) || 0;
+      const traitValue = parseInt(dataset.traitValue) || 0;
+      const skillValue = parseInt(dataset.skillValue) || 0;
+      
+      // Apply the overflow rule: if keep > pool, add difference to modifier
+      let keepValue = traitValue;
+      let modifier = skillValue;
+      
+      if (traitValue > groupValue) {
+        keepValue = groupValue;
+        modifier = skillValue + (traitValue - groupValue);
+      }
+      
+      const formula = `${groupValue}k${keepValue}+${modifier}`;
+      const skillName = dataset.skill;
+      
+      // Use the dice pool system to roll
+      const { rollDicePool } = await import('../helpers/dice-pool.mjs');
+      const result = rollDicePool(formula);
+      
+      if (result.success) {
+        const messageData = {
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          flavor: `Skill Check: ${skillName}`,
+          roll: result.roll,
+        };
+        
+        await ChatMessage.create(messageData);
+      } else {
+        ui.notifications.error(result.error);
+      }
+      return;
+    }
 
     // Handle item rolls.
     switch (dataset.rollType) {
