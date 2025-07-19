@@ -47,10 +47,20 @@ export class OmegaActor extends Actor {
     // Make modifications to data here. For example:
     const systemData = actorData.system;
 
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(systemData.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
+    // Process Physical Core Traits
+    if (systemData.coreTraits && systemData.coreTraits.physical) {
+      for (let [key, trait] of Object.entries(systemData.coreTraits.physical)) {
+        // In Omega Horizon, the trait value IS the modifier
+        trait.mod = trait.value;
+      }
+    }
+
+    // Process Mental Core Traits
+    if (systemData.coreTraits && systemData.coreTraits.mental) {
+      for (let [key, trait] of Object.entries(systemData.coreTraits.mental)) {
+        // In Omega Horizon, the trait value IS the modifier
+        trait.mod = trait.value;
+      }
     }
   }
 
@@ -85,10 +95,17 @@ export class OmegaActor extends Actor {
   _getCharacterRollData(data) {
     if (this.type !== 'character') return;
 
-    // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
-    if (data.abilities) {
-      for (let [k, v] of Object.entries(data.abilities)) {
+    // Copy the physical traits to the top level, so that rolls can use
+    // formulas like `@agi.mod + 4`.
+    if (data.coreTraits && data.coreTraits.physical) {
+      for (let [k, v] of Object.entries(data.coreTraits.physical)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
+
+    // Copy the mental traits to the top level
+    if (data.coreTraits && data.coreTraits.mental) {
+      for (let [k, v] of Object.entries(data.coreTraits.mental)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }

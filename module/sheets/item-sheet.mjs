@@ -52,9 +52,6 @@ export class OmegaItemSheet extends api.HandlebarsApplicationMixin(
     attributesGear: {
       template: 'systems/omega-v12/templates/item/attribute-parts/gear.hbs',
     },
-    attributesSpell: {
-      template: 'systems/omega-v12/templates/item/attribute-parts/spell.hbs',
-    },
     effects: {
       template: 'systems/omega-v12/templates/item/effects.hbs',
     },
@@ -74,9 +71,6 @@ export class OmegaItemSheet extends api.HandlebarsApplicationMixin(
         break;
       case 'gear':
         options.parts.push('attributesGear');
-        break;
-      case 'spell':
-        options.parts.push('attributesSpell');
         break;
     }
   }
@@ -109,7 +103,6 @@ export class OmegaItemSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case 'attributesFeature':
       case 'attributesGear':
-      case 'attributesSpell':
         // Necessary for preserving active tab on re-render
         context.tab = context.tabs[partId];
         break;
@@ -170,7 +163,6 @@ export class OmegaItemSheet extends api.HandlebarsApplicationMixin(
           break;
         case 'attributesFeature':
         case 'attributesGear':
-        case 'attributesSpell':
           tab.id = 'attributes';
           tab.label += 'Attributes';
           break;

@@ -1,12 +1,30 @@
 {
   "OMEGA": {
-    "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+    "Trait": {
+      "Agi": { "long": "Agility", "abbr": "AGI" },
+      "Aug": { "long": "Augment", "abbr": "AUG" },
+      "Con": { "long": "Constitution", "abbr": "CON" },
+      "Gen": { "long": "Genetics", "abbr": "GEN" },
+      "Str": { "long": "Strength", "abbr": "STR" },
+      "Cha": { "long": "Charisma", "abbr": "CHA" },
+      "Cyb": { "long": "Cybernetics", "abbr": "CYB" },
+      "Int": { "long": "Intellect", "abbr": "INT" },
+      "Psi": { "long": "Psionics", "abbr": "PSI" },
+      "Wit": { "long": "Wits", "abbr": "WIT" }
+    },
+    "CoreTraits": {
+      "Physical": "Physical Traits",
+      "Mental": "Mental Traits"
+    },
+    "Career": {
+      "Title": "Career",
+      "Plural": "Careers",
+      "Select": "Select Career"
+    },
+    "Species": {
+      "Title": "Species",
+      "Plural": "Species",
+      "Select": "Select Species"
     },
     "SheetLabels": {
       "Actor": "Omega Actor Sheet",
@@ -17,7 +35,6 @@
         "Biography": "Biography",
         "Features": "Features",
         "Gear": "Gear",
-        "Spells": "Spells",
         "Effects": "Effects"
       },
       "base": {
@@ -30,7 +47,9 @@
           "power": {
             "value": {"label": "Power"},
             "max": {"label": "Maximum Power"}
-          }
+          },
+          "career": {"label": "Career"},
+          "species": {"label": "Species"}
         }
       },
       "Character": {
@@ -60,13 +79,6 @@
           "quantity": {"label": "Quantity"},
           "weight": {"label": "Weight"}
         }
-      },
-      "Spell": {
-        "FIELDS": {
-          "level": {"label": "Spell Level"}
-        },
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
       }
     },
     "Effect": {
@@ -94,8 +106,7 @@
     },
     "Item": {
       "gear": "Gear",
-      "feature": "Feature",
-      "spell": "Spell"
+      "feature": "Feature"
     }
   }
 }

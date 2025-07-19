@@ -1,25 +1,37 @@
 export const OMEGA = {};
 
 /**
- * The set of Ability Scores used within the system.
+ * The set of Core Traits used within the Omega Horizon system.
  * @type {Object}
  */
-OMEGA.abilities = {
-  str: 'OMEGA.Ability.Str.long',
-  dex: 'OMEGA.Ability.Dex.long',
-  con: 'OMEGA.Ability.Con.long',
-  int: 'OMEGA.Ability.Int.long',
-  wis: 'OMEGA.Ability.Wis.long',
-  cha: 'OMEGA.Ability.Cha.long',
+OMEGA.coreTraits = {
+  physical: {
+    agi: 'OMEGA.Trait.Agi.long',
+    aug: 'OMEGA.Trait.Aug.long',
+    con: 'OMEGA.Trait.Con.long',
+    gen: 'OMEGA.Trait.Gen.long',
+    str: 'OMEGA.Trait.Str.long'
+  },
+  mental: {
+    cha: 'OMEGA.Trait.Cha.long',
+    cyb: 'OMEGA.Trait.Cyb.long',
+    int: 'OMEGA.Trait.Int.long',
+    psi: 'OMEGA.Trait.Psi.long',
+    wit: 'OMEGA.Trait.Wit.long'
+  }
 };
 
-OMEGA.abilityAbbreviations = {
-  str: 'OMEGA.Ability.Str.abbr',
-  dex: 'OMEGA.Ability.Dex.abbr',
-  con: 'OMEGA.Ability.Con.abbr',
-  int: 'OMEGA.Ability.Int.abbr',
-  wis: 'OMEGA.Ability.Wis.abbr',
-  cha: 'OMEGA.Ability.Cha.abbr',
+OMEGA.coreTraitAbbreviations = {
+  agi: 'OMEGA.Trait.Agi.abbr',
+  aug: 'OMEGA.Trait.Aug.abbr',
+  con: 'OMEGA.Trait.Con.abbr',
+  gen: 'OMEGA.Trait.Gen.abbr',
+  str: 'OMEGA.Trait.Str.abbr',
+  cha: 'OMEGA.Trait.Cha.abbr',
+  cyb: 'OMEGA.Trait.Cyb.abbr',
+  int: 'OMEGA.Trait.Int.abbr',
+  psi: 'OMEGA.Trait.Psi.abbr',
+  wit: 'OMEGA.Trait.Wit.abbr'
 };
 
 /**

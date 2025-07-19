@@ -1,0 +1,56 @@
+{{! Core Traits Section }}
+<section class='traits-section'>
+  <div class='traits-container'>
+    {{! Physical Traits }}
+    <div class='trait-group physical-traits'>
+      <h3 class='trait-group-title'>{{localize 'OMEGA.CoreTraits.Physical'}}</h3>
+      <div class='trait-grid'>
+        {{#each system.coreTraits.physical as |trait key|}}
+          <div class='trait-item' data-trait='{{key}}'>
+            <label class='trait-label' for='system.coreTraits.physical.{{key}}.value'>
+              {{localize trait.label}}
+            </label>
+            <div class='trait-content'>
+              <input
+                type='number'
+                name='system.coreTraits.physical.{{key}}.value'
+                value='{{trait.value}}'
+                min='1'
+                max='10'
+                data-dtype='Number'
+                class='trait-value'
+              />
+              <span class='trait-modifier'>{{trait.mod}}</span>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    {{! Mental Traits }}
+    <div class='trait-group mental-traits'>
+      <h3 class='trait-group-title'>{{localize 'OMEGA.CoreTraits.Mental'}}</h3>
+      <div class='trait-grid'>
+        {{#each system.coreTraits.mental as |trait key|}}
+          <div class='trait-item' data-trait='{{key}}'>
+            <label class='trait-label' for='system.coreTraits.mental.{{key}}.value'>
+              {{localize trait.label}}
+            </label>
+            <div class='trait-content'>
+              <input
+                type='number'
+                name='system.coreTraits.mental.{{key}}.value'
+                value='{{trait.value}}'
+                min='1'
+                max='10'
+                data-dtype='Number'
+                class='trait-value'
+              />
+              <span class='trait-modifier'>{{trait.mod}}</span>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section> 

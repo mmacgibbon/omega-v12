@@ -1,20 +1,10 @@
 {
   "id": "omega-v12",
   "title": "Omega V12",
-  "description": "The Omega Dice Pool system for FoundryVTT! Features a custom dice pool system using d6s with keep mechanics.",
+  "description": "Omega Horizon system",
   "authors": [
     {
-      "name": "Asacolips",
-      "discord": "asacolips"
-    },
-    {
-      "name": "Lee Talman",
-      "discord": ".pizzaWizard"
-    },
-    {
-      "name": "Joseph M.",
-      "url": "https://joseph-meehan.carrd.co/",
-      "discord": "chaosos"
+      "name": "Matthew MacGibbon"
     }
   ],
   "flags": {

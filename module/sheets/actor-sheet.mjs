@@ -45,6 +45,9 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
+    traits: {
+      template: 'systems/omega-v12/templates/actor/traits.hbs',
+    },
     features: {
       template: 'systems/omega-v12/templates/actor/features.hbs',
     },
@@ -53,9 +56,6 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
     },
     gear: {
       template: 'systems/omega-v12/templates/actor/gear.hbs',
-    },
-    spells: {
-      template: 'systems/omega-v12/templates/actor/spells.hbs',
     },
     effects: {
       template: 'systems/omega-v12/templates/actor/effects.hbs',
@@ -66,13 +66,13 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'tabs', 'biography'];
+    options.parts = ['header', 'tabs', 'traits', 'biography'];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'character':
-        options.parts.push('features', 'gear', 'spells', 'effects');
+        options.parts.push('features', 'gear', 'effects');
         break;
       case 'npc':
         options.parts.push('gear', 'effects');
@@ -109,8 +109,10 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
+      case 'traits':
+        context.tab = context.tabs[partId];
+        break;
       case 'features':
-      case 'spells':
       case 'gear':
         context.tab = context.tabs[partId];
         break;
@@ -153,7 +155,7 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'biography';
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'traits';
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
@@ -169,6 +171,10 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
         case 'header':
         case 'tabs':
           return tabs;
+        case 'traits':
+          tab.id = 'traits';
+          tab.label += 'Traits';
+          break;
         case 'biography':
           tab.id = 'biography';
           tab.label += 'Biography';
@@ -180,10 +186,6 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
         case 'gear':
           tab.id = 'gear';
           tab.label += 'Gear';
-          break;
-        case 'spells':
-          tab.id = 'spells';
-          tab.label += 'Spells';
           break;
         case 'effects':
           tab.id = 'effects';
@@ -208,18 +210,6 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
     // this sheet does with spells
     const gear = [];
     const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
@@ -231,22 +221,11 @@ export class OmegaActorSheet extends api.HandlebarsApplicationMixin(
       else if (i.type === 'feature') {
         features.push(i);
       }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
-      }
-    }
-
-    for (const s of Object.values(spells)) {
-      s.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     }
 
     // Sort then assign
     context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.spells = spells;
   }
 
   /**

@@ -1,6 +1,6 @@
-export default class BoilerplateActorBase extends foundry.abstract
+export default class OmegaActorBase extends foundry.abstract
   .TypeDataModel {
-  static LOCALIZATION_PREFIXES = ["BOILERPLATE.Actor.base"];
+  static LOCALIZATION_PREFIXES = ["OMEGA.Actor.base"];
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -20,6 +20,8 @@ export default class BoilerplateActorBase extends foundry.abstract
       max: new fields.NumberField({ ...requiredInteger, initial: 5 }),
     });
     schema.biography = new fields.HTMLField();
+    schema.career = new fields.StringField({ initial: "" });
+    schema.species = new fields.StringField({ initial: "" });
 
     return schema;
   }

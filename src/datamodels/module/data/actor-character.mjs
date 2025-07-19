@@ -1,9 +1,9 @@
-import BoilerplateActorBase from './base-actor.mjs';
+import OmegaActorBase from './base-actor.mjs';
 
-export default class BoilerplateCharacter extends BoilerplateActorBase {
+export default class OmegaCharacter extends OmegaActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'BOILERPLATE.Actor.Character',
+    'OMEGA.Actor.Character',
   ];
 
   static defineSchema() {
@@ -17,43 +17,129 @@ export default class BoilerplateCharacter extends BoilerplateActorBase {
       }),
     });
 
-    // Iterate over ability names and create a new SchemaField for each.
-    schema.abilities = new fields.SchemaField(
-      Object.keys(CONFIG.BOILERPLATE.abilities).reduce((obj, ability) => {
-        obj[ability] = new fields.SchemaField({
+    // Define Core Traits schema
+    schema.coreTraits = new fields.SchemaField({
+      physical: new fields.SchemaField({
+        agi: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 10,
-            min: 0,
+            initial: 1,
+            min: 1,
+            max: 10,
           }),
-        });
-        return obj;
-      }, {})
-    );
+        }),
+        aug: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        con: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        gen: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        str: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+      }),
+      mental: new fields.SchemaField({
+        cha: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        cyb: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        int: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        psi: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+        wit: new fields.SchemaField({
+          value: new fields.NumberField({
+            ...requiredInteger,
+            initial: 1,
+            min: 1,
+            max: 10,
+          }),
+        }),
+      }),
+    });
 
     return schema;
   }
 
   prepareDerivedData() {
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (const key in this.abilities) {
-      // Calculate the modifier using d20 rules.
-      this.abilities[key].mod = Math.floor(
-        (this.abilities[key].value - 10) / 2
-      );
-      // Handle ability label localization.
-      this.abilities[key].label =
-        game.i18n.localize(CONFIG.BOILERPLATE.abilities[key]) ?? key;
+    // Process Physical traits
+    for (const [key, trait] of Object.entries(this.coreTraits.physical)) {
+      // In Omega Horizon, the trait value IS the modifier
+      trait.mod = trait.value;
+      // Handle trait label localization
+      trait.label = game.i18n.localize(CONFIG.OMEGA.coreTraits.physical[key]) ?? key;
+    }
+
+    // Process Mental traits
+    for (const [key, trait] of Object.entries(this.coreTraits.mental)) {
+      // In Omega Horizon, the trait value IS the modifier
+      trait.mod = trait.value;
+      // Handle trait label localization
+      trait.label = game.i18n.localize(CONFIG.OMEGA.coreTraits.mental[key]) ?? key;
     }
   }
 
   getRollData() {
     const data = {};
 
-    // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
-    if (this.abilities) {
-      for (let [k, v] of Object.entries(this.abilities)) {
+    // Copy the physical traits to the top level, so that rolls can use
+    // formulas like `@agi.mod + 4`.
+    if (this.coreTraits.physical) {
+      for (let [k, v] of Object.entries(this.coreTraits.physical)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
+
+    // Copy the mental traits to the top level
+    if (this.coreTraits.mental) {
+      for (let [k, v] of Object.entries(this.coreTraits.mental)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }

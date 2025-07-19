@@ -487,3 +487,141 @@
 .boilerplate .effects .item .effect-controls {
   border: none;
 }
+
+/* Omega V12 System Styles */
+
+/* Character Info Fields */
+.character-info {
+  margin-bottom: 10px;
+}
+
+.character-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-label {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-field input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px 8px;
+  font-size: 0.9em;
+  background: white;
+}
+
+.character-field input:focus {
+  border-color: #4b0082;
+  outline: none;
+  box-shadow: 0 0 3px rgba(75, 0, 130, 0.3);
+}
+
+.character-field input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Core Traits Section */
+.traits-section {
+  padding: 10px;
+}
+
+.traits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trait-group {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  background: #f9f9f9;
+}
+
+.trait-group-title {
+  margin: 0 0 15px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #666;
+  color: #333;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.physical-traits .trait-group-title {
+  border-bottom-color: #8b4513;
+  color: #8b4513;
+}
+
+.mental-traits .trait-group-title {
+  border-bottom-color: #4b0082;
+  color: #4b0082;
+}
+
+.trait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.trait-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.trait-label {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #333;
+}
+
+.trait-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trait-value {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.trait-modifier {
+  font-weight: bold;
+  color: #666;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .trait-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .trait-content {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .character-info {
+    grid-template-columns: 1fr;
+  }
+}
