@@ -65,42 +65,28 @@
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. }}
       <div class='resource flex-group-center'>
-        <label for='system.health.value' class='resource-label'>
-          {{localize 'OMEGA.Actor.base.FIELDS.health.value.label'}}
+        <label for='system.body.value' class='resource-label'>
+          {{localize 'OMEGA.Actor.base.FIELDS.body.value.label'}}
         </label>
         <div class='resource-content flexrow flex-center flex-between'>
           <input
             type='text'
-            name='system.health.value'
-            value='{{system.health.value}}'
-            data-dtype='Number'
-          />
-          <span> / </span>
-          <input
-            type='text'
-            name='system.health.max'
-            value='{{system.health.max}}'
+            name='system.body.value'
+            value='{{system.body.value}}'
             data-dtype='Number'
           />
         </div>
       </div>
 
       <div class='resource flex-group-center'>
-        <label for='system.power.value' class='resource-label'>
-          {{localize 'OMEGA.Actor.base.FIELDS.power.value.label'}}
+        <label for='system.mind.value' class='resource-label'>
+          {{localize 'OMEGA.Actor.base.FIELDS.mind.value.label'}}
         </label>
         <div class='resource-content flexrow flex-center flex-between'>
           <input
             type='text'
-            name='system.power.value'
-            value='{{system.power.value}}'
-            data-dtype='Number'
-          />
-          <span> / </span>
-          <input
-            type='text'
-            name='system.power.max'
-            value='{{system.power.max}}'
+            name='system.mind.value'
+            value='{{system.mind.value}}'
             data-dtype='Number'
           />
         </div>

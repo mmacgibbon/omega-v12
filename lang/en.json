@@ -57,13 +57,11 @@
       "base": {
         "FIELDS": {
           "biography": {"label": "Biography"},
-          "health": {
-            "value": {"label": "Health"},
-            "max": {"label": "Maximum Health"}
+          "body": {
+            "value": {"label": "Body"}
           },
-          "power": {
-            "value": {"label": "Power"},
-            "max": {"label": "Maximum Power"}
+          "mind": {
+            "value": {"label": "Mind"}
           },
           "career": {"label": "Career"},
           "species": {"label": "Species"},

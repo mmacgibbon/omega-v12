@@ -21,85 +21,135 @@ export default class OmegaCharacter extends OmegaActorBase {
     schema.coreTraits = new fields.SchemaField({
       physical: new fields.SchemaField({
         agi: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
             min: 0,
             max: 10,
+          }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
           }),
         }),
         aug: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
             min: 0,
             max: 10,
+          }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
           }),
         }),
         con: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
             min: 0,
             max: 10,
           }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
+          }),
         }),
         gen: new fields.SchemaField({
-          value: new fields.SchemaField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
             min: 0,
             max: 10,
           }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
+          }),
         }),
         str: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
             min: 0,
             max: 10,
+          }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
           }),
         }),
       }),
       mental: new fields.SchemaField({
         cha: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
             min: 0,
             max: 10,
+          }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
           }),
         }),
         cyb: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
             min: 0,
             max: 10,
+          }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
           }),
         }),
         int: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
             min: 0,
             max: 10,
           }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
+          }),
         }),
         psi: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
             min: 0,
             max: 10,
           }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
+          }),
         }),
         wit: new fields.SchemaField({
-          value: new fields.NumberField({
+          base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
             min: 0,
             max: 10,
+          }),
+          modifier: new fields.NumberField({
+            ...requiredInteger,
+            initial: 0,
+            min: 0,
           }),
         }),
       }),
@@ -222,7 +272,9 @@ export default class OmegaCharacter extends OmegaActorBase {
   prepareDerivedData() {
     // Process Physical traits
     for (const [key, trait] of Object.entries(this.coreTraits.physical)) {
-      // In Omega Horizon, the trait value IS the modifier
+      // Calculate total value from base + modifier
+      trait.value = trait.base + trait.modifier;
+      // In Omega Horizon, the total value IS the modifier for rolls
       trait.mod = trait.value;
       // Handle trait label localization
       trait.label = game.i18n.localize(CONFIG.OMEGA.coreTraits.physical[key]) ?? key;
@@ -230,7 +282,9 @@ export default class OmegaCharacter extends OmegaActorBase {
 
     // Process Mental traits
     for (const [key, trait] of Object.entries(this.coreTraits.mental)) {
-      // In Omega Horizon, the trait value IS the modifier
+      // Calculate total value from base + modifier
+      trait.value = trait.base + trait.modifier;
+      // In Omega Horizon, the total value IS the modifier for rolls
       trait.mod = trait.value;
       // Handle trait label localization
       trait.label = game.i18n.localize(CONFIG.OMEGA.coreTraits.mental[key]) ?? key;
@@ -271,6 +325,25 @@ export default class OmegaCharacter extends OmegaActorBase {
         }
       }
     }
+
+    // Calculate Body and Mind from core traits
+    this.calculateBodyAndMind();
+  }
+
+  calculateBodyAndMind() {
+    // Calculate Body from physical traits (base + modifier)
+    let bodyTotal = 0;
+    for (const [key, trait] of Object.entries(this.coreTraits.physical)) {
+      bodyTotal += trait.value; // trait.value is already base + modifier
+    }
+    this.body.value = bodyTotal;
+
+    // Calculate Mind from mental traits (base + modifier)
+    let mindTotal = 0;
+    for (const [key, trait] of Object.entries(this.coreTraits.mental)) {
+      mindTotal += trait.value; // trait.value is already base + modifier
+    }
+    this.mind.value = mindTotal;
   }
 
   getRollData() {

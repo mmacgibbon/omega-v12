@@ -7,20 +7,37 @@
       <div class='trait-grid'>
         {{#each system.coreTraits.physical as |trait key|}}
           <div class='trait-item' data-trait='{{key}}'>
-            <label class='trait-label' for='system.coreTraits.physical.{{key}}.value'>
+            <label class='trait-label' for='system.coreTraits.physical.{{key}}.base'>
               {{localize trait.label}}
             </label>
             <div class='trait-content'>
-              <input
-                type='number'
-                name='system.coreTraits.physical.{{key}}.value'
-                value='{{trait.value}}'
-                min='1'
-                max='10'
-                data-dtype='Number'
-                class='trait-value'
-              />
-              <span class='trait-modifier'>{{trait.mod}}</span>
+              <div class='trait-base'>
+                <label class='trait-sub-label'>Base</label>
+                <input
+                  type='number'
+                  name='system.coreTraits.physical.{{key}}.base'
+                  value='{{trait.base}}'
+                  min='0'
+                  max='10'
+                  data-dtype='Number'
+                  class='trait-base-value'
+                />
+              </div>
+              <div class='trait-modifier-section'>
+                <label class='trait-sub-label'>Mod</label>
+                <input
+                  type='number'
+                  name='system.coreTraits.physical.{{key}}.modifier'
+                  value='{{trait.modifier}}'
+                  min='0'
+                  data-dtype='Number'
+                  class='trait-modifier-value'
+                />
+              </div>
+              <div class='trait-total'>
+                <span class='trait-total-label'>Total</span>
+                <span class='trait-total-value'>{{trait.value}}</span>
+              </div>
             </div>
           </div>
         {{/each}}
@@ -33,20 +50,37 @@
       <div class='trait-grid'>
         {{#each system.coreTraits.mental as |trait key|}}
           <div class='trait-item' data-trait='{{key}}'>
-            <label class='trait-label' for='system.coreTraits.mental.{{key}}.value'>
+            <label class='trait-label' for='system.coreTraits.mental.{{key}}.base'>
               {{localize trait.label}}
             </label>
             <div class='trait-content'>
-              <input
-                type='number'
-                name='system.coreTraits.mental.{{key}}.value'
-                value='{{trait.value}}'
-                min='1'
-                max='10'
-                data-dtype='Number'
-                class='trait-value'
-              />
-              <span class='trait-modifier'>{{trait.mod}}</span>
+              <div class='trait-base'>
+                <label class='trait-sub-label'>Base</label>
+                <input
+                  type='number'
+                  name='system.coreTraits.mental.{{key}}.base'
+                  value='{{trait.base}}'
+                  min='0'
+                  max='10'
+                  data-dtype='Number'
+                  class='trait-base-value'
+                />
+              </div>
+              <div class='trait-modifier-section'>
+                <label class='trait-sub-label'>Mod</label>
+                <input
+                  type='number'
+                  name='system.coreTraits.mental.{{key}}.modifier'
+                  value='{{trait.modifier}}'
+                  min='0'
+                  data-dtype='Number'
+                  class='trait-modifier-value'
+                />
+              </div>
+              <div class='trait-total'>
+                <span class='trait-total-label'>Total</span>
+                <span class='trait-total-value'>{{trait.value}}</span>
+              </div>
             </div>
           </div>
         {{/each}}

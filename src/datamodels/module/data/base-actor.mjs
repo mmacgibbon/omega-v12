@@ -7,17 +7,15 @@ export default class OmegaActorBase extends foundry.abstract
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = {};
 
-    schema.health = new fields.SchemaField({
+    schema.body = new fields.SchemaField({
       value: new fields.NumberField({
         ...requiredInteger,
-        initial: 10,
+        initial: 0,
         min: 0,
       }),
-      max: new fields.NumberField({ ...requiredInteger, initial: 10 }),
     });
-    schema.power = new fields.SchemaField({
-      value: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
-      max: new fields.NumberField({ ...requiredInteger, initial: 5 }),
+    schema.mind = new fields.SchemaField({
+      value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
     });
     schema.biography = new fields.HTMLField();
     schema.career = new fields.StringField({ initial: "" });

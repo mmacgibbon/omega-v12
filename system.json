@@ -51,6 +51,6 @@
     "units": "ft",
     "diagonals": 0
   },
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
+  "primaryTokenAttribute": "body",
+  "secondaryTokenAttribute": "mind"
 }
