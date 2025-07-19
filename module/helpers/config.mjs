@@ -39,7 +39,19 @@ OMEGA.coreTraitAbbreviations = {
  * @type {Object}
  */
 OMEGA.skillGroups = {
-  // Skill groups will be defined here
+  athletics: 'OMEGA.SkillGroup.Athletics',
+  combat: 'OMEGA.SkillGroup.Combat',
+  computers: 'OMEGA.SkillGroup.Computers',
+  engineering: 'OMEGA.SkillGroup.Engineering',
+  knowledge: 'OMEGA.SkillGroup.Knowledge',
+  medical: 'OMEGA.SkillGroup.Medical',
+  perception: 'OMEGA.SkillGroup.Perception',
+  piloting: 'OMEGA.SkillGroup.Piloting',
+  psionic: 'OMEGA.SkillGroup.Psionic',
+  scoundrel: 'OMEGA.SkillGroup.Scoundrel',
+  social: 'OMEGA.SkillGroup.Social',
+  stealth: 'OMEGA.SkillGroup.Stealth',
+  survival: 'OMEGA.SkillGroup.Survival'
 };
 
 /**

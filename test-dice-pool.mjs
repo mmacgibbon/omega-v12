@@ -12,7 +12,9 @@ const testFormulas = [
   '7k4+3',
   '3k2-1',
   '10k10',
-  '1k1'
+  '1k1',
+  '0k0+3',
+  '10k0+2'
 ];
 
 console.log('Testing valid formulas:');

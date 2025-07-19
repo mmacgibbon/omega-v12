@@ -23,40 +23,40 @@ export default class OmegaCharacter extends OmegaActorBase {
         agi: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 2,
+            min: 0,
             max: 10,
           }),
         }),
         aug: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 0,
+            min: 0,
             max: 10,
           }),
         }),
         con: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 2,
+            min: 0,
             max: 10,
           }),
         }),
         gen: new fields.SchemaField({
-          value: new fields.NumberField({
+          value: new fields.SchemaField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 0,
+            min: 0,
             max: 10,
           }),
         }),
         str: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 2,
+            min: 0,
             max: 10,
           }),
         }),
@@ -65,48 +65,153 @@ export default class OmegaCharacter extends OmegaActorBase {
         cha: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 2,
+            min: 0,
             max: 10,
           }),
         }),
         cyb: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 0,
+            min: 0,
             max: 10,
           }),
         }),
         int: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 2,
+            min: 0,
             max: 10,
           }),
         }),
         psi: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 0,
+            min: 0,
             max: 10,
           }),
         }),
         wit: new fields.SchemaField({
           value: new fields.NumberField({
             ...requiredInteger,
-            initial: 1,
-            min: 1,
+            initial: 2,
+            min: 0,
             max: 10,
           }),
         }),
       }),
     });
 
-    // Define Skill Groups schema (structure only - no predefined groups)
-    schema.skillGroups = new fields.SchemaField({});
+    // Define Skill Groups schema
+    schema.skillGroups = new fields.SchemaField({
+      athletics: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      combat: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      computers: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      engineering: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      knowledge: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      medical: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      perception: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      piloting: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      psionic: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      scoundrel: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      social: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      stealth: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+      survival: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+          max: 10,
+        }),
+      }),
+    });
 
     // Define Skills schema (structure only - no predefined skills)
     schema.skills = new fields.SchemaField({});

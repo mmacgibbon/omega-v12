@@ -48,6 +48,18 @@ export class OmegaDicePool {
       
       const { pool, keep, modifier } = parsed;
       
+      // Handle 0k0 and Xk0 cases (no dice kept, just modifier)
+      if ((pool === 0 && keep === 0) || keep === 0) {
+        this.results = [];
+        this.total = modifier;
+        this.modifier = modifier;
+        this.poolSize = 0;
+        this.keepSize = 0;
+        this.droppedRolls = [];
+        this.allRolls = [];
+        return this;
+      }
+      
       // Roll the dice
       const rolls = [];
       for (let i = 0; i < pool; i++) {
@@ -82,7 +94,7 @@ export class OmegaDicePool {
    * @returns {Object|null} - Parsed result or null if invalid
    */
   static parseDicePool(formula) {
-    // Match patterns like: 5k4, 5k4+3, 5k4-2
+    // Match patterns like: 5k4, 5k4+3, 5k4-2, 0k0+3
     const match = formula.match(/^(\d+)k(\d+)([+-]\d+)?$/);
     if (!match) return null;
     
@@ -90,7 +102,15 @@ export class OmegaDicePool {
     const keep = parseInt(match[2]);
     const modifier = match[3] ? parseInt(match[3]) : 0;
     
-    // Validate ranges
+    // Special cases: 0k0 and Xk0 are valid (no dice kept, just modifier)
+    if (pool === 0 && keep === 0) {
+      return { pool: 0, keep: 0, modifier };
+    }
+    if (keep === 0) {
+      return { pool: 0, keep: 0, modifier };
+    }
+    
+    // Validate ranges for normal dice pools
     if (pool < 1 || pool > 10) return null;
     if (keep < 1 || keep > 10) return null;
     if (keep > pool) return null;
@@ -114,6 +134,22 @@ export class OmegaDicePool {
     
     // Create a custom roll
     const roll = new Roll(formula, {}, options);
+    
+    // Handle 0k0 and Xk0 cases (no dice kept, just modifier)
+    if ((pool === 0 && keep === 0) || keep === 0) {
+      roll.total = modifier;
+      roll.results = [];
+      roll._omegaData = {
+        pool: 0,
+        keep: 0,
+        modifier,
+        keptRolls: [],
+        droppedRolls: [],
+        allRolls: [],
+        keptTotal: 0
+      };
+      return roll;
+    }
     
     // Roll the dice
     const rolls = [];
@@ -161,6 +197,20 @@ export class OmegaDicePool {
     if (modifier > 0) message += `+${modifier}`;
     else if (modifier < 0) message += `${modifier}`;
     message += `</div>`;
+    
+    // Handle 0k0 and Xk0 cases (no dice kept)
+    if ((pool === 0 && keep === 0) || keep === 0) {
+      message += `<div class="omega-rolls">`;
+      message += `<span class="omega-no-dice">No dice kept</span>`;
+      message += `</div>`;
+      
+      message += `<div class="omega-total">`;
+      message += `<span class="omega-modifier">${modifier}</span>`;
+      message += `</div>`;
+      message += `</div>`;
+      
+      return message;
+    }
     
     message += `<div class="omega-rolls">`;
     message += `<span class="omega-kept">Kept: [${keptRolls.join(', ')}]</span>`;
@@ -252,6 +302,11 @@ style.textContent = `
   .omega-equals {
     color: #333;
     margin-left: 4px;
+  }
+  
+  .omega-no-dice {
+    color: #999;
+    font-style: italic;
   }
 `;
 document.head.appendChild(style); 

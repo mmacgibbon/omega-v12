@@ -16,7 +16,21 @@
       "Physical": "Physical Traits",
       "Mental": "Mental Traits"
     },
-    "SkillGroup": {},
+    "SkillGroup": {
+      "Athletics": "Athletics",
+      "Combat": "Combat",
+      "Computers": "Computers",
+      "Engineering": "Engineering",
+      "Knowledge": "Knowledge",
+      "Medical": "Medical",
+      "Perception": "Perception",
+      "Piloting": "Piloting",
+      "Psionic": "Psionic",
+      "Scoundrel": "Scoundrel",
+      "Social": "Social",
+      "Stealth": "Stealth",
+      "Survival": "Survival"
+    },
     "Skill": {},
     "Career": {
       "Title": "Career",

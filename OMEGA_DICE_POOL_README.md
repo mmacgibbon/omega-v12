@@ -17,6 +17,8 @@ The Omega Dice Pool system uses the syntax: `XkY+Z`
 - `3k2-1` = Roll 3d6, keep the highest 2 dice, subtract 1 from the result
 - `10k10` = Roll 10d6, keep all 10 dice
 - `1k1` = Roll 1d6, keep 1 die
+- `0k0+3` = No dice rolled, result is 3 (static modifier only)
+- `10k0+2` = No dice kept, result is 2 (static modifier only)
 
 ### Invalid Examples
 
@@ -73,7 +75,8 @@ Dice pool rolls are displayed in chat with:
 
 ## System Features
 
-- **Range Validation**: Pool size 1-10, keep size 1-10, keep ≤ pool
+- **Range Validation**: Pool size 1-10, keep size 1-10, keep ≤ pool (except 0k0 and Xk0)
+- **Zero Dice Support**: 0k0 and Xk0 rolls result in no dice being kept, just the modifier
 - **Visual Feedback**: Clear display of kept vs dropped dice
 - **Modifier Support**: Positive and negative modifiers
 - **Integration**: Works with existing FoundryVTT roll systems
