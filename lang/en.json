@@ -16,35 +16,8 @@
       "Physical": "Physical Traits",
       "Mental": "Mental Traits"
     },
-    "SkillGroup": {
-      "Athletics": "Athletics",
-      "Combat": "Combat",
-      "Social": "Social",
-      "Technical": "Technical",
-      "Knowledge": "Knowledge",
-      "Perception": "Perception"
-    },
-    "Skill": {
-      "Climb": "Climb",
-      "Swim": "Swim",
-      "Run": "Run",
-      "Jump": "Jump",
-      "Melee": "Melee",
-      "Ranged": "Ranged",
-      "Dodge": "Dodge",
-      "Persuade": "Persuade",
-      "Intimidate": "Intimidate",
-      "Deceive": "Deceive",
-      "Computers": "Computers",
-      "Engineering": "Engineering",
-      "Medicine": "Medicine",
-      "Science": "Science",
-      "History": "History",
-      "Streetwise": "Streetwise",
-      "Notice": "Notice",
-      "Search": "Search",
-      "Track": "Track"
-    },
+    "SkillGroup": {},
+    "Skill": {},
     "Career": {
       "Title": "Career",
       "Plural": "Careers",
