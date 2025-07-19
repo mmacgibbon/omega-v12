@@ -19,8 +19,8 @@
       />
     </div>
     
-    {{! Career and Species Row }}
-    <div class='character-info grid grid-2col'>
+    {{! Career, Species, and Faction Row }}
+    <div class='character-info grid grid-3col'>
       <div class='character-field'>
         <label for='system.career' class='field-label'>
           {{localize 'OMEGA.Actor.base.FIELDS.career.label'}}
@@ -41,6 +41,17 @@
           name='system.species'
           value='{{system.species}}'
           placeholder='{{localize "OMEGA.Species.Select"}}'
+        />
+      </div>
+      <div class='character-field'>
+        <label for='system.faction' class='field-label'>
+          {{localize 'OMEGA.Actor.base.FIELDS.faction.label'}}
+        </label>
+        <input
+          type='text'
+          name='system.faction'
+          value='{{system.faction}}'
+          placeholder='{{localize "OMEGA.Faction.Select"}}'
         />
       </div>
     </div>

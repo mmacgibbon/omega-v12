@@ -22,6 +22,7 @@ export default class OmegaActorBase extends foundry.abstract
     schema.biography = new fields.HTMLField();
     schema.career = new fields.StringField({ initial: "" });
     schema.species = new fields.StringField({ initial: "" });
+    schema.faction = new fields.StringField({ initial: "" });
 
     return schema;
   }

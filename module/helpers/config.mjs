@@ -35,6 +35,24 @@ OMEGA.coreTraitAbbreviations = {
 };
 
 /**
+ * Faction Configuration
+ * @type {Object}
+ */
+OMEGA.factions = {
+  // Major factions in the Omega Horizon setting
+  corporate: 'OMEGA.Faction.Corporate',
+  government: 'OMEGA.Faction.Government',
+  military: 'OMEGA.Faction.Military',
+  criminal: 'OMEGA.Faction.Criminal',
+  independent: 'OMEGA.Faction.Independent',
+  religious: 'OMEGA.Faction.Religious',
+  scientific: 'OMEGA.Faction.Scientific',
+  mercenary: 'OMEGA.Faction.Mercenary',
+  pirate: 'OMEGA.Faction.Pirate',
+  colonial: 'OMEGA.Faction.Colonial'
+};
+
+/**
  * Dice Pool Configuration
  * @type {Object}
  */

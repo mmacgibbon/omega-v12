@@ -26,6 +26,21 @@
       "Plural": "Species",
       "Select": "Select Species"
     },
+    "Faction": {
+      "Title": "Faction",
+      "Plural": "Factions",
+      "Select": "Select Faction",
+      "Corporate": "Corporate",
+      "Government": "Government",
+      "Military": "Military",
+      "Criminal": "Criminal",
+      "Independent": "Independent",
+      "Religious": "Religious",
+      "Scientific": "Scientific",
+      "Mercenary": "Mercenary",
+      "Pirate": "Pirate",
+      "Colonial": "Colonial"
+    },
     "SheetLabels": {
       "Actor": "Omega Actor Sheet",
       "Item": "Omega Item Sheet"
@@ -49,7 +64,8 @@
             "max": {"label": "Maximum Power"}
           },
           "career": {"label": "Career"},
-          "species": {"label": "Species"}
+          "species": {"label": "Species"},
+          "faction": {"label": "Faction"}
         }
       },
       "Character": {
