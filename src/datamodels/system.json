@@ -4,17 +4,7 @@
   "description": "The Omega Horizon system for FoundryVTT!",
   "authors": [
     {
-      "name": "Asacolips",
-      "discord": "asacolips"
-    },
-    {
-      "name": "Lee Talman",
-      "discord": ".pizzaWizard"
-    },
-    {
-      "name": "Joseph M.",
-      "url": "https://joseph-meehan.carrd.co/",
-      "discord": "chaosos"
+      "name": "Matthew MacGibbon"
     }
   ],
   "documentTypes": {
