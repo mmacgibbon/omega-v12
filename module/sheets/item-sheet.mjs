@@ -6,7 +6,7 @@ const { api, sheets } = foundry.applications;
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheetV2}
  */
-export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
+export class OmegaItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2
 ) {
   constructor(options = {}) {
@@ -16,7 +16,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['boilerplate', 'item'],
+    classes: ['omega-v12', 'item'],
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -36,27 +36,27 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/boilerplate/templates/item/header.hbs',
+      template: 'systems/omega-v12/templates/item/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
     description: {
-      template: 'systems/boilerplate/templates/item/description.hbs',
+      template: 'systems/omega-v12/templates/item/description.hbs',
     },
     attributesFeature: {
       template:
-        'systems/boilerplate/templates/item/attribute-parts/feature.hbs',
+        'systems/omega-v12/templates/item/attribute-parts/feature.hbs',
     },
     attributesGear: {
-      template: 'systems/boilerplate/templates/item/attribute-parts/gear.hbs',
+      template: 'systems/omega-v12/templates/item/attribute-parts/gear.hbs',
     },
     attributesSpell: {
-      template: 'systems/boilerplate/templates/item/attribute-parts/spell.hbs',
+      template: 'systems/omega-v12/templates/item/attribute-parts/spell.hbs',
     },
     effects: {
-      template: 'systems/boilerplate/templates/item/effects.hbs',
+      template: 'systems/omega-v12/templates/item/effects.hbs',
     },
   };
 
@@ -95,8 +95,8 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
       // Adding system and flags for easier access
       system: this.item.system,
       flags: this.item.flags,
-      // Adding a pointer to CONFIG.BOILERPLATE
-      config: CONFIG.BOILERPLATE,
+      // Adding a pointer to CONFIG.OMEGA
+      config: CONFIG.OMEGA,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
     };
@@ -158,7 +158,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
         // FontAwesome Icon, if you so choose
         icon: '',
         // Run through localization
-        label: 'BOILERPLATE.Item.Tabs.',
+        label: 'OMEGA.Item.Tabs.',
       };
       switch (partId) {
         case 'header':
@@ -208,7 +208,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle changing a Document's image.
    *
-   * @this BoilerplateItemSheet
+   * @this OmegaItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise}
@@ -236,7 +236,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Renders an embedded document's sheet
    *
-   * @this BoilerplateItemSheet
+   * @this OmegaItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
@@ -249,7 +249,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handles item deletion
    *
-   * @this BoilerplateItemSheet
+   * @this OmegaItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
@@ -262,7 +262,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
    *
-   * @this BoilerplateItemSheet
+   * @this OmegaItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
@@ -296,7 +296,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Determines effect parent to pass to helper
    *
-   * @this BoilerplateItemSheet
+   * @this OmegaItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private

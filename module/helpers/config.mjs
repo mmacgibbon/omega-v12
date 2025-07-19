@@ -1,23 +1,36 @@
-export const BOILERPLATE = {};
+export const OMEGA = {};
 
 /**
  * The set of Ability Scores used within the system.
  * @type {Object}
  */
-BOILERPLATE.abilities = {
-  str: 'BOILERPLATE.Ability.Str.long',
-  dex: 'BOILERPLATE.Ability.Dex.long',
-  con: 'BOILERPLATE.Ability.Con.long',
-  int: 'BOILERPLATE.Ability.Int.long',
-  wis: 'BOILERPLATE.Ability.Wis.long',
-  cha: 'BOILERPLATE.Ability.Cha.long',
+OMEGA.abilities = {
+  str: 'OMEGA.Ability.Str.long',
+  dex: 'OMEGA.Ability.Dex.long',
+  con: 'OMEGA.Ability.Con.long',
+  int: 'OMEGA.Ability.Int.long',
+  wis: 'OMEGA.Ability.Wis.long',
+  cha: 'OMEGA.Ability.Cha.long',
 };
 
-BOILERPLATE.abilityAbbreviations = {
-  str: 'BOILERPLATE.Ability.Str.abbr',
-  dex: 'BOILERPLATE.Ability.Dex.abbr',
-  con: 'BOILERPLATE.Ability.Con.abbr',
-  int: 'BOILERPLATE.Ability.Int.abbr',
-  wis: 'BOILERPLATE.Ability.Wis.abbr',
-  cha: 'BOILERPLATE.Ability.Cha.abbr',
+OMEGA.abilityAbbreviations = {
+  str: 'OMEGA.Ability.Str.abbr',
+  dex: 'OMEGA.Ability.Dex.abbr',
+  con: 'OMEGA.Ability.Con.abbr',
+  int: 'OMEGA.Ability.Int.abbr',
+  wis: 'OMEGA.Ability.Wis.abbr',
+  cha: 'OMEGA.Ability.Cha.abbr',
+};
+
+/**
+ * Dice Pool Configuration
+ * @type {Object}
+ */
+OMEGA.dicePool = {
+  minPool: 1,
+  maxPool: 10,
+  minKeep: 1,
+  maxKeep: 10,
+  dieSize: 6,
+  syntax: 'XkY+Z where X = pool size, Y = keep size, Z = modifier'
 };

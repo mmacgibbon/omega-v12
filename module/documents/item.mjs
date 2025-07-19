@@ -2,7 +2,7 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class BoilerplateItem extends Item {
+export class OmegaItem extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
@@ -56,16 +56,26 @@ export class BoilerplateItem extends Item {
       // Retrieve roll data.
       const rollData = this.getRollData();
 
-      // Invoke the roll and submit it to chat.
-      const roll = new Roll(rollData.formula, rollData);
-      // If you need to store the value first, uncomment the next line.
-      // const result = await roll.evaluate();
-      roll.toMessage({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-      });
-      return roll;
+      // Check if this is a dice pool formula
+      if (this.system.formula && this.system.formula.match(/^\d+k\d+/)) {
+        // Use the Omega Dice Pool system
+        return await game.omega.dicePool.rollDicePoolChat(this.system.formula, {
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: label
+        });
+      } else {
+        // Use standard Foundry rolling
+        const roll = new Roll(rollData.formula, rollData);
+        // If you need to store the value first, uncomment the next line.
+        // const result = await roll.evaluate();
+        roll.toMessage({
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: label,
+        });
+        return roll;
+      }
     }
   }
 }

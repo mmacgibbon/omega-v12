@@ -1,5 +1,5 @@
 {
-  "BOILERPLATE": {
+  "OMEGA": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
       "Con": { "long": "Constitution", "abbr": "con" },
@@ -9,8 +9,8 @@
       "Cha": { "long": "Charisma", "abbr": "cha" }
     },
     "SheetLabels": {
-      "Actor": "Boilerplate Actor Sheet",
-      "Item": "Boilerplate Item Sheet"
+      "Actor": "Omega Actor Sheet",
+      "Item": "Omega Item Sheet"
     },
     "Actor": {
       "Tabs": {
@@ -75,6 +75,16 @@
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
+    },
+    "DicePool": {
+      "Title": "Omega Dice Pool",
+      "Syntax": "Syntax: XkY+Z (roll X d6, keep highest Y, add Z)",
+      "Examples": "Examples: 5k4, 7k4+3, 3k2-1",
+      "InvalidFormula": "Invalid dice pool formula",
+      "Roll": "Roll Dice Pool",
+      "Kept": "Kept",
+      "Dropped": "Dropped",
+      "Total": "Total"
     }
   },
   "TYPES": {
