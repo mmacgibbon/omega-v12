@@ -6,7 +6,7 @@ const { api, sheets } = foundry.applications;
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheetV2}
  */
-export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
+export class OmegaHorizonItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2
 ) {
   constructor(options = {}) {
@@ -16,7 +16,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['boilerplate', 'item'],
+    classes: ['omega-horizon', 'item'],
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -36,27 +36,27 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/boilerplate/templates/item/header.hbs',
+      template: 'systems/omega-horizon/templates/item/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
     description: {
-      template: 'systems/boilerplate/templates/item/description.hbs',
+      template: 'systems/omega-horizon/templates/item/description.hbs',
     },
     attributesFeature: {
       template:
-        'systems/boilerplate/templates/item/attribute-parts/feature.hbs',
+        'systems/omega-horizon/templates/item/attribute-parts/feature.hbs',
     },
     attributesGear: {
-      template: 'systems/boilerplate/templates/item/attribute-parts/gear.hbs',
+      template: 'systems/omega-horizon/templates/item/attribute-parts/gear.hbs',
     },
     attributesSpell: {
-      template: 'systems/boilerplate/templates/item/attribute-parts/spell.hbs',
+      template: 'systems/omega-horizon/templates/item/attribute-parts/spell.hbs',
     },
     effects: {
-      template: 'systems/boilerplate/templates/item/effects.hbs',
+      template: 'systems/omega-horizon/templates/item/effects.hbs',
     },
   };
 
@@ -95,8 +95,8 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
       // Adding system and flags for easier access
       system: this.item.system,
       flags: this.item.flags,
-      // Adding a pointer to CONFIG.BOILERPLATE
-      config: CONFIG.BOILERPLATE,
+      // Adding a pointer to CONFIG.OMEGA_HORIZON
+      config: CONFIG.OMEGA_HORIZON,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
@@ -161,7 +161,7 @@ export class BoilerplateItemSheet extends api.HandlebarsApplicationMixin(
         // FontAwesome Icon, if you so choose
         icon: '',
         // Run through localization
-        label: 'BOILERPLATE.Item.Tabs.',
+        label: 'OMEGA_HORIZON.Item.Tabs.',
       };
       switch (partId) {
         case 'header':

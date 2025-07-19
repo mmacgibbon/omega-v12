@@ -1,4 +1,4 @@
-export default class OmegaActorBase extends foundry.abstract
+export default class OmegaHorizonActorBase extends foundry.abstract
   .TypeDataModel {
   static LOCALIZATION_PREFIXES = ["OMEGA.Actor.base"];
 

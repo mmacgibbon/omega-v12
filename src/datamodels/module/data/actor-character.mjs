@@ -1,6 +1,6 @@
-import OmegaActorBase from './base-actor.mjs';
+import OmegaHorizonActorBase from './base-actor.mjs';
 
-export default class OmegaCharacter extends OmegaActorBase {
+export default class OmegaHorizonCharacter extends OmegaHorizonActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
     'OMEGA.Actor.Character',
@@ -20,7 +20,7 @@ export default class OmegaCharacter extends OmegaActorBase {
     // Define Core Traits schema
     schema.coreTraits = new fields.SchemaField({
       physical: new fields.SchemaField({
-        agi: new fields.SchemaField({
+        agility: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
@@ -33,7 +33,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        aug: new fields.SchemaField({
+        augment: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
@@ -46,7 +46,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        con: new fields.SchemaField({
+        constitution: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
@@ -59,7 +59,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        gen: new fields.SchemaField({
+        genetics: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
@@ -72,7 +72,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        str: new fields.SchemaField({
+        strength: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
@@ -87,7 +87,7 @@ export default class OmegaCharacter extends OmegaActorBase {
         }),
       }),
       mental: new fields.SchemaField({
-        cha: new fields.SchemaField({
+        charisma: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
@@ -100,7 +100,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        cyb: new fields.SchemaField({
+        cybernetics: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
@@ -113,7 +113,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        int: new fields.SchemaField({
+        intellect: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
@@ -126,7 +126,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        psi: new fields.SchemaField({
+        psionics: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 0,
@@ -139,7 +139,7 @@ export default class OmegaCharacter extends OmegaActorBase {
             min: 0,
           }),
         }),
-        wit: new fields.SchemaField({
+        wits: new fields.SchemaField({
           base: new fields.NumberField({
             ...requiredInteger,
             initial: 2,
@@ -277,7 +277,7 @@ export default class OmegaCharacter extends OmegaActorBase {
       // In Omega Horizon, the total value IS the modifier for rolls
       trait.mod = trait.value;
       // Handle trait label localization
-      trait.label = game.i18n.localize(CONFIG.OMEGA.coreTraits.physical[key]) ?? key;
+      trait.label = game.i18n.localize(CONFIG.OMEGA_HORIZON.coreTraits.physical[key]) ?? key;
     }
 
     // Process Mental traits
@@ -287,14 +287,14 @@ export default class OmegaCharacter extends OmegaActorBase {
       // In Omega Horizon, the total value IS the modifier for rolls
       trait.mod = trait.value;
       // Handle trait label localization
-      trait.label = game.i18n.localize(CONFIG.OMEGA.coreTraits.mental[key]) ?? key;
+      trait.label = game.i18n.localize(CONFIG.OMEGA_HORIZON.coreTraits.mental[key]) ?? key;
     }
 
     // Process Skill Groups (if any are defined)
     if (this.skillGroups) {
       for (const [key, group] of Object.entries(this.skillGroups)) {
-        if (CONFIG.OMEGA.skillGroups && CONFIG.OMEGA.skillGroups[key]) {
-          group.label = game.i18n.localize(CONFIG.OMEGA.skillGroups[key]) ?? key;
+        if (CONFIG.OMEGA_HORIZON.skillGroups && CONFIG.OMEGA_HORIZON.skillGroups[key]) {
+          group.label = game.i18n.localize(CONFIG.OMEGA_HORIZON.skillGroups[key]) ?? key;
         } else {
           group.label = key;
         }
@@ -304,8 +304,8 @@ export default class OmegaCharacter extends OmegaActorBase {
     // Process Skills (if any are defined)
     if (this.skills) {
       for (const [key, skill] of Object.entries(this.skills)) {
-        if (CONFIG.OMEGA.skills && CONFIG.OMEGA.skills[key]) {
-          skill.label = game.i18n.localize(CONFIG.OMEGA.skills[key]) ?? key;
+        if (CONFIG.OMEGA_HORIZON.skills && CONFIG.OMEGA_HORIZON.skills[key]) {
+          skill.label = game.i18n.localize(CONFIG.OMEGA_HORIZON.skills[key]) ?? key;
         } else {
           skill.label = key;
         }
@@ -350,7 +350,7 @@ export default class OmegaCharacter extends OmegaActorBase {
     const data = {};
 
     // Copy the physical traits to the top level, so that rolls can use
-    // formulas like `@agi.mod + 4`.
+    // formulas like `@agility.mod + 4`.
     if (this.coreTraits.physical) {
       for (let [k, v] of Object.entries(this.coreTraits.physical)) {
         data[k] = foundry.utils.deepClone(v);

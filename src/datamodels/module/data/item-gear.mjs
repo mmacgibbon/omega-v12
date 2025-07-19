@@ -1,9 +1,9 @@
-import BoilerplateItemBase from './base-item.mjs';
+import OmegaHorizonItemBase from './base-item.mjs';
 
-export default class BoilerplateGear extends BoilerplateItemBase {
+export default class OmegaHorizonGear extends OmegaHorizonItemBase {
   static LOCALIZATION_PREFIXES = [
-    'BOILERPLATE.Item.base',
-    'BOILERPLATE.Item.Gear',
+    'OMEGA.Item.base',
+    'OMEGA.Item.Gear',
   ];
 
   static defineSchema() {
@@ -32,7 +32,7 @@ export default class BoilerplateGear extends BoilerplateItemBase {
       }),
       diceSize: new fields.StringField({ initial: 'd20' }),
       diceBonus: new fields.StringField({
-        initial: '+@str.mod+ceil(@lvl / 2)',
+        initial: '+@strength.mod+ceil(@lvl / 2)',
       }),
     });
 

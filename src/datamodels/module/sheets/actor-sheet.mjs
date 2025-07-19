@@ -6,7 +6,7 @@ const { api, sheets } = foundry.applications;
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheetV2}
  */
-export class BoilerplateActorSheet extends api.HandlebarsApplicationMixin(
+export class OmegaHorizonActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
   constructor(options = {}) {
@@ -16,7 +16,7 @@ export class BoilerplateActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['boilerplate', 'actor'],
+    classes: ['omega-horizon', 'actor'],
     position: {
       width: 600,
       height: 600,
@@ -39,26 +39,26 @@ export class BoilerplateActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/boilerplate/templates/actor/header.hbs',
+      template: 'systems/omega-horizon/templates/actor/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
     features: {
-      template: 'systems/boilerplate/templates/actor/features.hbs',
+      template: 'systems/omega-horizon/templates/actor/features.hbs',
     },
     biography: {
-      template: 'systems/boilerplate/templates/actor/biography.hbs',
+      template: 'systems/omega-horizon/templates/actor/biography.hbs',
     },
     gear: {
-      template: 'systems/boilerplate/templates/actor/gear.hbs',
+      template: 'systems/omega-horizon/templates/actor/gear.hbs',
     },
     spells: {
-      template: 'systems/boilerplate/templates/actor/spells.hbs',
+      template: 'systems/omega-horizon/templates/actor/spells.hbs',
     },
     effects: {
-      template: 'systems/boilerplate/templates/actor/effects.hbs',
+      template: 'systems/omega-horizon/templates/actor/effects.hbs',
     },
   };
 
@@ -95,8 +95,8 @@ export class BoilerplateActorSheet extends api.HandlebarsApplicationMixin(
       // Add the actor's data to context.data for easier access, as well as flags.
       system: this.actor.system,
       flags: this.actor.flags,
-      // Adding a pointer to CONFIG.BOILERPLATE
-      config: CONFIG.BOILERPLATE,
+      // Adding a pointer to CONFIG.OMEGA_HORIZON
+      config: CONFIG.OMEGA_HORIZON,
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
@@ -166,7 +166,7 @@ export class BoilerplateActorSheet extends api.HandlebarsApplicationMixin(
         // FontAwesome Icon, if you so choose
         icon: '',
         // Run through localization
-        label: 'BOILERPLATE.Actor.Tabs.',
+        label: 'OMEGA_HORIZON.Actor.Tabs.',
       };
       switch (partId) {
         case 'header':

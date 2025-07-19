@@ -1,8 +1,8 @@
-import BoilerplateItemBase from './base-item.mjs';
+import OmegaHorizonItemBase from './base-item.mjs';
 
-export default class BoilerplateFeature extends BoilerplateItemBase {
+export default class OmegaHorizonFeature extends OmegaHorizonItemBase {
   static LOCALIZATION_PREFIXES = [
-    'BOILERPLATE.Item.base',
-    'BOILERPLATE.Item.Feature',
+    'OMEGA.Item.base',
+    'OMEGA.Item.Feature',
   ];
 }

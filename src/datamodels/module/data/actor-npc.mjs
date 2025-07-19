@@ -1,9 +1,9 @@
-import BoilerplateActorBase from './base-actor.mjs';
+import OmegaHorizonActorBase from './base-actor.mjs';
 
-export default class BoilerplateNPC extends BoilerplateActorBase {
+export default class OmegaHorizonNPC extends OmegaHorizonActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'BOILERPLATE.Actor.NPC',
+    'OMEGA.Actor.NPC',
   ];
 
   static defineSchema() {

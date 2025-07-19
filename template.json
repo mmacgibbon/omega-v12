@@ -23,22 +23,22 @@
         }
       },
       "abilities": {
-        "str": {
+        "strength": {
           "value": 10
         },
-        "dex": {
+        "agility": {
           "value": 10
         },
-        "con": {
+        "constitution": {
           "value": 10
         },
-        "int": {
+        "intellect": {
           "value": 10
         },
-        "wis": {
+        "wits": {
           "value": 10
         },
-        "cha": {
+        "charisma": {
           "value": 10
         }
       }
@@ -60,7 +60,7 @@
       "templates": ["base"],
       "quantity": 1,
       "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "formula": "d20 + @strength.mod + ceil(@lvl / 2)"
     },
     "feature": {
       "templates": ["base"]

@@ -1,44 +1,44 @@
-export const OMEGA = {};
+export const OMEGA_HORIZON = {};
 
 /**
  * The set of Core Traits used within the Omega Horizon system.
  * @type {Object}
  */
-OMEGA.coreTraits = {
+OMEGA_HORIZON.coreTraits = {
   physical: {
-    agi: 'OMEGA.Trait.Agi.long',
-    aug: 'OMEGA.Trait.Aug.long',
-    con: 'OMEGA.Trait.Con.long',
-    gen: 'OMEGA.Trait.Gen.long',
-    str: 'OMEGA.Trait.Str.long'
+    agility: 'OMEGA.Trait.agility.long',
+    augment: 'OMEGA.Trait.augment.long',
+    constitution: 'OMEGA.Trait.constitution.long',
+    genetics: 'OMEGA.Trait.genetics.long',
+    strength: 'OMEGA.Trait.strength.long'
   },
   mental: {
-    cha: 'OMEGA.Trait.Cha.long',
-    cyb: 'OMEGA.Trait.Cyb.long',
-    int: 'OMEGA.Trait.Int.long',
-    psi: 'OMEGA.Trait.Psi.long',
-    wit: 'OMEGA.Trait.Wit.long'
+    charisma: 'OMEGA.Trait.charisma.long',
+    cybernetics: 'OMEGA.Trait.cybernetics.long',
+    intellect: 'OMEGA.Trait.intellect.long',
+    psionics: 'OMEGA.Trait.psionics.long',
+    wits: 'OMEGA.Trait.wits.long'
   }
 };
 
-OMEGA.coreTraitAbbreviations = {
-  agi: 'OMEGA.Trait.Agi.abbr',
-  aug: 'OMEGA.Trait.Aug.abbr',
-  con: 'OMEGA.Trait.Con.abbr',
-  gen: 'OMEGA.Trait.Gen.abbr',
-  str: 'OMEGA.Trait.Str.abbr',
-  cha: 'OMEGA.Trait.Cha.abbr',
-  cyb: 'OMEGA.Trait.Cyb.abbr',
-  int: 'OMEGA.Trait.Int.abbr',
-  psi: 'OMEGA.Trait.Psi.abbr',
-  wit: 'OMEGA.Trait.Wit.abbr'
+OMEGA_HORIZON.coreTraitAbbreviations = {
+  agility: 'OMEGA.Trait.agility.abbr',
+  augment: 'OMEGA.Trait.augment.abbr',
+  constitution: 'OMEGA.Trait.constitution.abbr',
+  genetics: 'OMEGA.Trait.genetics.abbr',
+  strength: 'OMEGA.Trait.strength.abbr',
+  charisma: 'OMEGA.Trait.charisma.abbr',
+  cybernetics: 'OMEGA.Trait.cybernetics.abbr',
+  intellect: 'OMEGA.Trait.intellect.abbr',
+  psionics: 'OMEGA.Trait.psionics.abbr',
+  wits: 'OMEGA.Trait.wits.abbr'
 };
 
 /**
  * Skill Groups Configuration
  * @type {Object}
  */
-OMEGA.skillGroups = {
+OMEGA_HORIZON.skillGroups = {
   athletics: 'OMEGA.SkillGroup.Athletics',
   combat: 'OMEGA.SkillGroup.Combat',
   computers: 'OMEGA.SkillGroup.Computers',
@@ -58,7 +58,7 @@ OMEGA.skillGroups = {
  * Skills Configuration
  * @type {Object}
  */
-OMEGA.skills = {
+OMEGA_HORIZON.skills = {
   // Skills will be defined here
 };
 
@@ -66,7 +66,7 @@ OMEGA.skills = {
  * Dice Pool Configuration
  * @type {Object}
  */
-OMEGA.dicePool = {
+OMEGA_HORIZON.dicePool = {
   minPool: 1,
   maxPool: 10,
   minKeep: 1,

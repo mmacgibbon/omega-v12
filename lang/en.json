@@ -1,16 +1,16 @@
 {
   "OMEGA": {
     "Trait": {
-      "Agi": { "long": "Agility", "abbr": "AGI" },
-      "Aug": { "long": "Augment", "abbr": "AUG" },
-      "Con": { "long": "Constitution", "abbr": "CON" },
-      "Gen": { "long": "Genetics", "abbr": "GEN" },
-      "Str": { "long": "Strength", "abbr": "STR" },
-      "Cha": { "long": "Charisma", "abbr": "CHA" },
-      "Cyb": { "long": "Cybernetics", "abbr": "CYB" },
-      "Int": { "long": "Intellect", "abbr": "INT" },
-      "Psi": { "long": "Psionics", "abbr": "PSI" },
-      "Wit": { "long": "Wits", "abbr": "WIT" }
+      "agility": { "long": "Agility", "abbr": "AGI" },
+      "augment": { "long": "Augment", "abbr": "AUG" },
+      "constitution": { "long": "Constitution", "abbr": "CON" },
+      "genetics": { "long": "Genetics", "abbr": "GEN" },
+      "strength": { "long": "Strength", "abbr": "STR" },
+      "charisma": { "long": "Charisma", "abbr": "CHA" },
+      "cybernetics": { "long": "Cybernetics", "abbr": "CYB" },
+      "intellect": { "long": "Intellect", "abbr": "INT" },
+      "psionics": { "long": "Psionics", "abbr": "PSI" },
+      "wits": { "long": "Wits", "abbr": "WIT" }
     },
     "CoreTraits": {
       "Physical": "Physical Traits",
@@ -113,6 +113,35 @@
       "Kept": "Kept",
       "Dropped": "Dropped",
       "Total": "Total"
+    }
+  },
+  "OMEGA_HORIZON": {
+    "SheetLabels": {
+      "Actor": "Omega Horizon Actor Sheet",
+      "Item": "Omega Horizon Item Sheet"
+    },
+    "Actor": {
+      "Tabs": {
+        "Biography": "Biography",
+        "Features": "Features",
+        "Gear": "Gear",
+        "Effects": "Effects",
+        "Skills": "Skills"
+      }
+    },
+    "Item": {
+      "Tabs": {
+        "Attributes": "Attributes",
+        "Description": "Description",
+        "Effects": "Effects"
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
     }
   },
   "TYPES": {
